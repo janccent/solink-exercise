@@ -7,9 +7,18 @@ require.config({
 
         QuestionsController:    'components/questions/questionsController',
 
-        'angularAMD':       '../node_modules/angular-amd/angularAMD.min',
-        'angular':          '../node_modules/angular/angular.min',
-        'angular-route':    '../node_modules/angular-route/angular-route.min'
+        'angularAMD':   [
+            '//cdn.jsdelivr.net/angular.amd/0.2.1/angularAMD.min',
+            '../node_modules/angular-amd/angularAMD.min'
+        ],
+        'angular':      [
+            '//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min',
+            '../node_modules/angular/angular.min'
+        ],
+        'angular-route':    [
+            '//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min',
+            '../node_modules/angular-route/angular-route.min'
+        ]
     },
     shim: {
         'angularAMD':       ['angular'],
