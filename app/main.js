@@ -6,6 +6,7 @@ require.config({
         app:    'app',
 
         QuestionsController:    'components/questions/questionsController',
+        QuestionsApiService:    'components/questions/questionsApiDummyService',
 
         'angularAMD':   [
             '//cdn.jsdelivr.net/angular.amd/0.2.1/angularAMD.min',
