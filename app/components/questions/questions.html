@@ -1,11 +1,12 @@
-<div class="accordion-container">
-    <div ng-repeat="question in questions">
-        <div>
-            <input id="{{question.question_id}}" type="checkbox" />
-            <label for="{{question.question_id}}">{{question.title}}</label>
-            <div class="accordion-content">
-                <p>TODO - Will be adding something here</p>
-            </div>
+<div ng-repeat="question in questions" class="accordion-container">
+    <div>
+        <input id="{{question.question_id}}" type="checkbox" />
+        <label for="{{question.question_id}}">{{question.title}}</label>
+        <div class="accordion-content">
+            <p>TODO - Will be adding something here</p>
         </div>
+    </div>
+    <div ng-if="$last" infinite-scroll >
+        loading
     </div>
 </div>

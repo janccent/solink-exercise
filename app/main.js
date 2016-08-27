@@ -5,8 +5,9 @@ require.config({
     paths: {
         app:    'app',
 
-        QuestionsController:    'components/questions/questionsController',
-        QuestionsApiService:    'components/questions/questionsApiDummyService',
+        QuestionsController:        'components/questions/questionsController',
+        QuestionsApiService:        'components/questions/questionsApiDummyService',
+        InfiniteScrollDirective:    'components/common/infiniteScrollDirective',
 
         'angularAMD':   [
             '//cdn.jsdelivr.net/angular.amd/0.2.1/angularAMD.min',
