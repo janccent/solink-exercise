@@ -6,6 +6,7 @@
             <label class="accordion-heading" for="{{question.question_id}}" ng-bind-html="question.title"></label>
             <div ng-class="{'accordion-content': true, 'accordion-content-sm': !question.accepted_answer_id}">
 
+                <!-- Data from question displayed as accordion data -->
                 <div class="grid-container">
                     <div class="grid-row">
                         <div class="grid-col grid-col-full">
@@ -46,6 +47,7 @@
                     </div>
                 </div>
 
+                <!-- When available display score extra data -->
                 <div ng-if="!!question.accepted_answer_id" class="score-wrapper">
                     <div ng-if="!hasDetails(question.accepted_answer_id)" class="loading"></div>
                     <div ng-if="hasDetails(question.accepted_answer_id)" class="score-overview">
@@ -71,6 +73,7 @@
             </div>
         </div>
 
+        <!-- Handle infinite scrolling -->
         <div ng-if="$last" infinite-scroll class="infinite-scroll-wrapper">
             <div>
                 <span>Loading more</span>

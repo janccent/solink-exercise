@@ -12,9 +12,13 @@ define([
             $http
         ) {
 
-            this.getAnswer = function(questionId) {
+            // Note: Using AngularJS $http instead of XMLHttpRequest
+
+            this.getAnswer = function(answerId) {
+                // Filter includes: question_id, accepted_answer_id, title, tags, last_activity_date, creation_date,
+                // answer_count
                 return $http({
-                    url: 'https://api.stackexchange.com/2.2/answers/' + questionId,
+                    url: 'https://api.stackexchange.com/2.2/answers/' + answerId,
                     method: 'GET',
                     params: {
                         order: 'desc',
@@ -26,6 +30,7 @@ define([
             };
 
             this.getQuestions = function(pageNumber) {
+                // Filter includes: score, up_vote_count, down_vote_count, answer_id
                 return $http({
                     url: 'https://api.stackexchange.com/2.2/questions',
                     method: 'GET',

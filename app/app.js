@@ -20,6 +20,7 @@ define([
             $routeProvider,
             $locationProvider
         ) {
+            // Configuration to avoid using # in URL
             $locationProvider.html5Mode(true);
 
             $routeProvider.when(
