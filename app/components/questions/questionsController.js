@@ -71,8 +71,8 @@ define([
 
             $scope.answers = {};
 
-            $scope.hasDetails = function(questionId) {
-                return $scope.answers.hasOwnProperty(questionId);
+            $scope.hasDetails = function(acceptedAnswerId) {
+                return $scope.answers.hasOwnProperty(acceptedAnswerId);
                 //return $scope.answers.hasOwnProperty(questionId) && $scope.answers[questionId].score > 0;
                 //return $scope.answers.hasOwnProperty(questionId) && (
                 //        $scope.answers[questionId].score > 0 ||
@@ -81,19 +81,20 @@ define([
                 //    );
             };
 
-            $scope.getDetail = function(questionId, hasAcceptedAnswer) {
+            $scope.getDetail = function(acceptedAnswerId) {
                 console.log('get detail');
                 console.log('quota' + $scope.quotaRemaining);
-                if ( hasAcceptedAnswer && $scope.quotaRemaining > 0 && (! $scope.answers.hasOwnProperty(questionId) || $scope.answers[questionId] == null) ) {
+                if ( acceptedAnswerId != null && $scope.quotaRemaining > 0 && (! $scope.answers.hasOwnProperty(acceptedAnswerId) || $scope.answers[acceptedAnswerId] == null) ) {
                     console.log('no answer so');
-                    QuestionsApiService.getAnswer(questionId).then(
+                    console.log("answer ID" + acceptedAnswerId);
+                    QuestionsApiService.getAnswer(acceptedAnswerId).then(
                         function(response) {
                             console.log('GET ANSWER');
                             console.log(response);
                             $scope.quotaRemaining = response.data.quota_remaining;
 
-                            $scope.answers[questionId] = response.data.items[0];
-                            console.log("question ID=" +questionId);
+                            $scope.answers[acceptedAnswerId] = response.data.items[0];
+
                         },
                         function(response) {
                             console.log('GET ANSWER - ERROR');

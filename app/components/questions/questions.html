@@ -2,7 +2,7 @@
     <h1>Questions and...</h1>
     <div ng-repeat="question in questions" class="accordion-container">
         <div>
-            <input id="{{question.question_id}}" type="checkbox" ng-change="getDetail(question.question_id)" ng-model="expanded[question.question_id]" />
+            <input id="{{question.question_id}}" type="checkbox" ng-change="getDetail(question.accepted_answer_id)" ng-model="expanded[question.question_id]" />
             <label class="accordion-heading" for="{{question.question_id}}" ng-bind-html="question.title"></label>
             <div ng-class="{'accordion-content': true, 'accordion-content-sm': !question.accepted_answer_id}">
                 <!--<p>TODO - Will be adding something here</p>-->
@@ -48,20 +48,20 @@
                 </div>
 
                 <div ng-if="!!question.accepted_answer_id" class="score-wrapper">
-                    <div ng-if="!hasDetails(question.question_id)" class="loading"></div>
-                    <div ng-if="hasDetails(question.question_id)" class="score-overview">
+                    <div ng-if="!hasDetails(question.accepted_answer_id)" class="loading"></div>
+                    <div ng-if="hasDetails(question.accepted_answer_id)" class="score-overview">
                         <div class="score">
                             <span class="score-heading">Answer Score</span>
                             <br/>
-                            <span class="score-value">{{answers[question.question_id].score}}</span>
+                            <span class="score-value">{{answers[question.accepted_answer_id].score}}</span>
                         </div>
                         <div class="votes up-vote">
                             <span></span>
-                            <span>{{answers[question.question_id].up_vote_count}} votes</span>
+                            <span>{{answers[question.accepted_answer_id].up_vote_count}} votes</span>
                         </div>
                         <div class="votes down-vote">
                             <span></span>
-                            <span>{{answers[question.question_id].down_vote_count}} votes</span>
+                            <span>{{answers[question.accepted_answer_id].down_vote_count}} votes</span>
                         </div>
                     </div>
                 </div>
