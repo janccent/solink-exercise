@@ -26,20 +26,31 @@ define([
 
             function addQuestions() {
                 console.log('CURRENT PAGE=' + currentPage);
-                QuestionsApiService.getQuestions(currentPage).then(
-                    function(response) {
-                        var questions = response.items;
+                console.log('quota' + $scope.quotaRemaining);
+                // TODO: quota
+                if ( $scope.quotaRemaining === undefined || $scope.quotaRemaining > 0 ) {
+                    QuestionsApiService.getQuestions(currentPage).then(
+                        function (response) {
+                            console.log('GET QUESTIONS');
+                            console.log(response);
+                            $scope.quotaRemaining = response.data.quota_remaining;
 
-                        questions.forEach( function(element) {
-                            // Convert dates (this could also have been done in the template with a custom filter)
-                            element.last_activity_date = getDate(element.last_activity_date);
-                            element.creation_date = getDate(element.creation_date);
+                            var questions = response.data.items;
 
-                            $scope.questions.push(element);
-                        });
-                    }
-                );
+                            questions.forEach(function (element) {
+                                // Convert dates (this could also have been done in the template with a custom filter)
+                                element.last_activity_date = getDate(element.last_activity_date);
+                                element.creation_date = getDate(element.creation_date);
 
+                                $scope.questions.push(element);
+                            });
+                        },
+                        function (response) {
+                            console.log('GET QUESTIONS - ERROR');
+                            console.log(response);
+                        }
+                    );
+                }
             }
 
             $scope.questions = [];
@@ -62,16 +73,31 @@ define([
 
             $scope.hasDetails = function(questionId) {
                 return $scope.answers.hasOwnProperty(questionId);
+                //return $scope.answers.hasOwnProperty(questionId) && $scope.answers[questionId].score > 0;
+                //return $scope.answers.hasOwnProperty(questionId) && (
+                //        $scope.answers[questionId].score > 0 ||
+                //        $scope.answers[questionId].up_vote_count > 0 ||
+                //        $scope.answers[questionId].down_vote_count > 0
+                //    );
             };
 
-            $scope.getDetail = function(questionId) {
+            $scope.getDetail = function(questionId, hasAcceptedAnswer) {
                 console.log('get detail');
-                if ( ! $scope.answers.hasOwnProperty(questionId) || $scope.answers[questionId] == null ) {
+                console.log('quota' + $scope.quotaRemaining);
+                if ( hasAcceptedAnswer && $scope.quotaRemaining > 0 && (! $scope.answers.hasOwnProperty(questionId) || $scope.answers[questionId] == null) ) {
                     console.log('no answer so');
                     QuestionsApiService.getAnswer(questionId).then(
                         function(response) {
-                            $scope.answers[questionId] = response.items[0];
+                            console.log('GET ANSWER');
+                            console.log(response);
+                            $scope.quotaRemaining = response.data.quota_remaining;
+
+                            $scope.answers[questionId] = response.data.items[0];
                             console.log("question ID=" +questionId);
+                        },
+                        function(response) {
+                            console.log('GET ANSWER - ERROR');
+                            console.log(response);
                         }
                     );
                 }

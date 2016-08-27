@@ -6,7 +6,8 @@ require.config({
         app:    'app',
 
         QuestionsController:        'components/questions/questionsController',
-        QuestionsApiService:        'components/questions/questionsApiDummyService',
+        //QuestionsApiService:        'components/questions/questionsApiDummyService',
+        QuestionsApiService:        'components/questions/questionsApiService',
         InfiniteScrollDirective:    'components/common/infiniteScrollDirective',
 
         'angularAMD':   [

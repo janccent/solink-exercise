@@ -40,7 +40,8 @@ define([
                 //    "quota_remaining": 9977
                 //};
 
-                var response = {
+                var response = {};
+                response.data = {
                     "items":[
                         {
                             "owner":{
@@ -92,7 +93,8 @@ define([
 
             // TODO: Dummy call to get the questions (returning a promise) to get the other code in place first
             this.getQuestions = function() {
-                var response = {
+                var response = {};
+                response.data = {
                     "items": [
                         {
                             "tags": [
