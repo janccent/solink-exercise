@@ -1,12 +1,56 @@
-<div ng-repeat="question in questions" class="accordion-container">
-    <div>
-        <input id="{{question.question_id}}" type="checkbox" />
-        <label for="{{question.question_id}}">{{question.title}}</label>
-        <div class="accordion-content">
-            <p>TODO - Will be adding something here</p>
+<div class="content-container">
+    <div ng-repeat="question in questions" class="accordion-container">
+        <div>
+            <input id="{{question.question_id}}" type="checkbox" ng-change="getDetail(question.question_id)" ng-model="expanded[question.question_id]" />
+            <label class="accordion-heading" for="{{question.question_id}}">{{question.title}}</label>
+            <div class="accordion-content">
+                <!--<p>TODO - Will be adding something here</p>-->
+
+                <div class="grid-container">
+                    <div class="grid-row">
+                        <div class="grid-col grid-col-quarter">
+                            <span class="heading">Answer Accepted</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class="content" ng-if="!!question.accepted_answer_id">Yes</span>
+                            <span class="content" ng-if="!question.accepted_answer_id">No</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class="heading">Total Answers</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class=>{{question.answer_count}}</span>
+                        </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="grid-col grid-col-quarter">
+                            <span class="heading">Last Activity</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class=>{{question.last_activity_date | date:'medium'}}</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class="heading">Created</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class=>{{question.creation_date | date:'medium'}}</span>
+                        </div>
+                    </div>
+                    <div class="grid-row">
+                        <div class="grid-full">
+                            <span class="heading tag-heading">Tags</span>
+                            <span class="tag" ng-repeat="tag in question.tags">
+                                {{tag}}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--<div>{{answers[question.question_id].body}}</div>-->
+            </div>
         </div>
-    </div>
-    <div ng-if="$last" infinite-scroll >
-        loading
+        <div ng-if="$last" infinite-scroll >
+            loading
+        </div>
     </div>
 </div>
