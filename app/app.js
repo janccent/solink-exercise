@@ -2,12 +2,14 @@
 
 define([
     'angularAMD',
-    'angular-route'
+    'angular-route',
+    'angular-sanitize'
 ], function(
     angularAMD
 ) {
     var app = angular.module('solinkCodingExercise', [
-        'ngRoute'
+        'ngRoute',
+        'ngSanitize'
     ]);
 
     // Configure routes

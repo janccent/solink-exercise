@@ -2,7 +2,7 @@
     <div ng-repeat="question in questions" class="accordion-container">
         <div>
             <input id="{{question.question_id}}" type="checkbox" ng-change="getDetail(question.question_id)" ng-model="expanded[question.question_id]" />
-            <label class="accordion-heading" for="{{question.question_id}}">{{question.title}}</label>
+            <label class="accordion-heading" for="{{question.question_id}}" ng-bind-html="question.title"></label>
             <div ng-class="{'accordion-content': true, 'accordion-content-sm': !question.accepted_answer_id}">
                 <!--<p>TODO - Will be adding something here</p>-->
 
