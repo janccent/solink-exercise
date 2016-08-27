@@ -25,21 +25,14 @@ h1 {
         margin: 0 auto;
     }
 }
-/*@media (min-width: 1200px) {*/
-    /*.accordion-container{*/
-        /*width: 1000px;*/
-    /*}*/
-/*}*/
 
 .accordion-container label.accordion-heading{
     position: relative;
     z-index: 100;
     display: block;
-    /*padding: 20px 10px;*/
     padding: 20px 30px 20px 10px;
     font-size: 16px;
     color: #252525;
-    /*text-shadow: 1px 1px 1px rgba(255,255,255,0.8);*/
     background: #ffffff;
     background: -moz-linear-gradient(top, #ffffff 0%, #efefef 100%);
     background: -webkit-linear-gradient(top, #ffffff 0%,#efefef 100%);
@@ -134,11 +127,6 @@ h1 {
     }
 }
 
-
-
-.accordion-container div.accordion-content p{
-}
-
 .grid-container {
     display: block;
     padding: 0 15px;
@@ -146,25 +134,24 @@ h1 {
 }
 .grid-row {
 }
-
 .grid-col {
     padding-bottom: 15px;
 }
 @media (min-width: 768px) {
+    .grid-col {
+        float: left;
+    }
     .grid-col-quarter {
         position: relative;
-        float: left;
         width: 25%;
     }
 
     .grid-col-half {
         position: relative;
-        float: left;
         width: 50%;
     }
 
     .grid-col-full {
-        float: left;
         width: 100%;
     }
 }
@@ -172,7 +159,6 @@ h1 {
 span.heading {
     font-weight: bold;
 }
-
 span.tag-heading {
     margin-right: 15px;
 }
@@ -187,12 +173,6 @@ span.tag {
     color: #000000;
 }
 
-/*div.loading {*/
-    /*width: 32px;*/
-    /*height: 32px;*/
-    /*background: no-repeat center center url('../images/loading.gif');*/
-    /*padding-top: 35px;*/
-/*}*/
 div.loading:before {
     content: url('../images/loading.gif');
 }
@@ -214,7 +194,6 @@ div.score-overview {
     padding: 10px;
     margin-top: 10px;
 }
-
 div.score-overview .score {
     font-weight: bold;
     margin-bottom: 10px;
@@ -223,9 +202,7 @@ div.score-overview .score-value {
     font-size: 40px;
 }
 
-
 div.votes {
-
 }
 div.up-vote:before {
     content: url('../images/arrow_up.png');
@@ -240,8 +217,6 @@ div.down-vote:before {
 div.down-vote {
     color: #808080;
 }
-
-
 
 .infinite-scroll-wrapper {
     text-align: center;
@@ -262,13 +237,11 @@ div.down-vote {
     content: "\2026";
     width: 0px;
 }
-
 @keyframes ellipsis {
     to {
         width: 20px;
     }
 }
-
 @-webkit-keyframes ellipsis {
     to {
         width: 20px;
