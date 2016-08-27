@@ -3,7 +3,7 @@
         <div>
             <input id="{{question.question_id}}" type="checkbox" ng-change="getDetail(question.question_id)" ng-model="expanded[question.question_id]" />
             <label class="accordion-heading" for="{{question.question_id}}">{{question.title}}</label>
-            <div class="accordion-content">
+            <div ng-class="{'accordion-content': true, 'accordion-content-sm': !question.accepted_answer_id}">
                 <!--<p>TODO - Will be adding something here</p>-->
 
                 <div class="grid-container">
@@ -46,11 +46,34 @@
                     </div>
                 </div>
 
-                <!--<div>{{answers[question.question_id].body}}</div>-->
+                <div ng-if="!!question.accepted_answer_id" class="score-wrapper">
+                    <div ng-if="!hasDetails(question.question_id)" class="loading"></div>
+                    <div ng-if="hasDetails(question.question_id)" class="score-overview">
+                        <div class="score">
+                            <span class="score-heading">Answer Score</span>
+                            <br/>
+                            <span class="score-value">{{answers[question.question_id].score}}</span>
+                        </div>
+                        <div class="votes up-vote">
+                            <span></span>
+                            <span>{{answers[question.question_id].up_vote_count}} votes</span>
+                        </div>
+                        <div class="votes down-vote">
+                            <span></span>
+                            <span>{{answers[question.question_id].down_vote_count}} votes</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        <div ng-if="$last" infinite-scroll >
-            loading
+
+        <div ng-if="$last" infinite-scroll class="infinite-scroll-wrapper">
+            <div>
+                <span>Loading more</span>
+            </div>
+            <div class="infinite-scroll-loading"></div>
         </div>
+
     </div>
 </div>

@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', 'sans-serif';
     color: #000000;
-    background-color: #B7B7B7;
+    background-color: #1F1F1F;
 }
 
 .content-container {
@@ -107,7 +107,7 @@ body {
     box-shadow: inset 0px -1px 3px 0px rgba(179,179,179,1);
 }
 .accordion-container input:checked ~ div.accordion-content{
-    height: 200px;
+    height: 280px;
     -webkit-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     -moz-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     -o-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
@@ -115,6 +115,10 @@ body {
     transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
 
 
+}
+
+.accordion-container input:checked ~ div.accordion-content.accordion-content-sm {
+    height: 130px;
 }
 
 
@@ -166,4 +170,85 @@ span.tag {
     border: 1px solid #0C7BDE;
     font-size: 10px;
     border-radius: 2px;
+}
+
+/*div.loading {*/
+    /*width: 32px;*/
+    /*height: 32px;*/
+    /*background: no-repeat center center url('../images/loading.gif');*/
+    /*padding-top: 35px;*/
+/*}*/
+div.loading:before {
+    content: url('../images/loading.gif');
+}
+
+div.score-wrapper {
+    text-align: center;
+}
+div.score-overview {
+    display: inline-block;
+    border: 2px solid #0C7BDE;
+    border-radius: 9px;
+    color: #0C7BDE;
+    width: 150px;
+    text-align: center;
+    font-size: 16px;
+    padding: 10px;
+}
+
+div.score-overview .score {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+div.score-overview .score-value {
+    font-size: 40px;
+}
+div.votes {
+
+}
+div.up-vote:before {
+    content: url('../images/arrow_up.png');
+}
+div.up-vote {
+    color: #ea8b1b;
+    margin-bottom: 5px;
+}
+div.down-vote:before {
+    content: url('../images/arrow_down.png');
+}
+div.down-vote {
+    color: #808080;
+}
+
+
+.infinite-scroll-wrapper {
+    text-align: center;
+    padding: 25px;
+    font-size: 12px;
+    color: #ffffff;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.8);
+}
+.infinite-scroll {
+    display: inline-block;
+}
+.infinite-scroll-loading:after {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    -webkit-animation: ellipsis steps(4,end) 900ms infinite;
+    animation: ellipsis steps(4,end) 900ms infinite;
+    content: "\2026";
+    width: 0px;
+}
+
+@keyframes ellipsis {
+    to {
+        width: 20px;
+    }
+}
+
+@-webkit-keyframes ellipsis {
+    to {
+        width: 20px;
+    }
 }

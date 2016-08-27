@@ -60,6 +60,10 @@ define([
 
             $scope.answers = {};
 
+            $scope.hasDetails = function(questionId) {
+                return $scope.answers.hasOwnProperty(questionId);
+            };
+
             $scope.getDetail = function(questionId) {
                 console.log('get detail');
                 if ( ! $scope.answers.hasOwnProperty(questionId) || $scope.answers[questionId] == null ) {
@@ -67,6 +71,7 @@ define([
                     QuestionsApiService.getAnswer(questionId).then(
                         function(response) {
                             $scope.answers[questionId] = response.items[0];
+                            console.log("question ID=" +questionId);
                         }
                     );
                 }
