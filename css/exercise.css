@@ -1,6 +1,11 @@
 body {
     font-family: 'Arial', 'sans-serif';
     color: #000000;
+    background-color: #B7B7B7;
+}
+
+.content-container {
+    /*text-align: center;*/
 }
 
 .accordion-container{
@@ -8,29 +13,85 @@ body {
     text-align: left;
 }
 @media (min-width: 768px) {
-    /*.accordion-container {*/
-    /*width: 700px;*/
-    /*}*/
+    .accordion-container {
+        /*display: inline-block;*/
+        /*width: 60%;*/
+        width: 600px;
+        margin: 0 auto;
+    }
 }
+/*@media (min-width: 1200px) {*/
+    /*.accordion-container{*/
+        /*width: 1000px;*/
+    /*}*/
+/*}*/
 
-.accordion-container label{
+.accordion-container label.accordion-heading{
     position: relative;
     z-index: 100;
     display: block;
-    background: #c4c4c4;
+    /*padding: 20px 10px;*/
+    padding: 20px 30px 20px 10px;
+    font-size: 16px;
+    color: #252525;
+    /*text-shadow: 1px 1px 1px rgba(255,255,255,0.8);*/
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #efefef 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#efefef 100%);
+    background: -o-linear-gradient(top, #ffffff 0%, #efefef 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#efefef 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#efefef',GradientType=0 );
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.7), 0px 3px 3px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.7), 0px 3px 3px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.7), 0px 3px 3px rgba(0,0,0,0.4);
 }
-.accordion-container label:hover{
+.accordion-container label.accordion-heading:hover{
     background: #ffffff;
 }
 .accordion-container input:checked + label,
 .accordion-container input:checked + label:hover{
+    color: #000000;
+    text-shadow: 0px 1px 1px rgba(255, 248, 211, 0.8);
     background: #ea8b1b;
+    background: -moz-linear-gradient(top, #FFD29B 0%, #ea8b1b 100%);
+    background: -webkit-linear-gradient(top, #FFD29B 0%,#ea8b1b 100%);
+    background: -o-linear-gradient(top, #FFD29B 0%, #ea8b1b 100%);
+    background: linear-gradient(to bottom, #FFD29B 0%,#ea8b1b 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFD29B', endColorstr='#ea8b1b',GradientType=0 );
+    -webkit-box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.7);
+    -moz-box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.7);
+    box-shadow: 0px 0px 0px 1px rgba(155,155,155,0.7);
+}
+.accordion-container label.accordion-heading:hover:after,
+.accordion-container input:checked + label:hover:after{
+    /*content: '\e315';*/
+    content: url('../images/chevron_down.png');
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 20px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.accordion-container input:checked + label:hover:after{
+    position: absolute;
+    display: block;
+    top: 50%;
+    right: 20px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    content: url('../images/chevron_up.png');
 }
 .accordion-container input{
     display: none;
 }
 
 .accordion-container div.accordion-content{
+    font-size: 12px;
     overflow: hidden;
     height: 0;
     position: relative;
@@ -40,6 +101,10 @@ body {
     -o-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
     -ms-transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
     transition: height 0.3s ease-in-out, box-shadow 0.6s linear;
+    background: #ffffff;
+    -webkit-box-shadow: inset 0px -1px 3px 0px rgba(179,179,179,1);
+    moz-box-shadow: inset 0px -1px 3px 0px rgba(179,179,179,1);
+    box-shadow: inset 0px -1px 3px 0px rgba(179,179,179,1);
 }
 .accordion-container input:checked ~ div.accordion-content{
     height: 200px;
@@ -48,7 +113,11 @@ body {
     -o-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     -ms-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
+
+
 }
+
+
 
 .accordion-container div.accordion-content p{
 }
