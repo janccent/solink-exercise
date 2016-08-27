@@ -112,18 +112,26 @@ h1 {
     box-shadow: inset 0px -1px 3px 0px rgba(179,179,179,1);
 }
 .accordion-container input:checked ~ div.accordion-content{
-    height: 280px;
+    height: 500px;
     -webkit-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     -moz-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     -o-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     -ms-transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
     transition: height 0.5s ease-in-out, box-shadow 0.1s linear;
-
-
+}
+@media (min-width: 768px) {
+    .accordion-container input:checked ~ div.accordion-content{
+        height: 280px;
+    }
 }
 
 .accordion-container input:checked ~ div.accordion-content.accordion-content-sm {
-    height: 130px;
+    height: 350px;
+}
+@media (min-width: 768px) {
+    .accordion-container input:checked ~ div.accordion-content.accordion-content-sm {
+        height: 130px;
+    }
 }
 
 
@@ -142,22 +150,23 @@ h1 {
 .grid-col {
     padding-bottom: 15px;
 }
+@media (min-width: 768px) {
+    .grid-col-quarter {
+        position: relative;
+        float: left;
+        width: 25%;
+    }
 
-.grid-col-quarter {
-    position: relative;
-    float: left;
-    width: 25%;
-}
+    .grid-col-half {
+        position: relative;
+        float: left;
+        width: 50%;
+    }
 
-.grid-col-half {
-    position: relative;
-    float: left;
-    width: 50%;
-}
-
-.grid-col-full {
-    float: left;
-    width: 100%;
+    .grid-col-full {
+        float: left;
+        width: 100%;
+    }
 }
 
 span.heading {
