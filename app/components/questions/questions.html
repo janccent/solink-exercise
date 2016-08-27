@@ -8,18 +8,11 @@
 
                 <div class="grid-container">
                     <div class="grid-row">
-                        <div class="grid-col grid-col-quarter">
-                            <span class="heading">Answer Accepted</span>
-                        </div>
-                        <div class="grid-col grid-col-quarter">
-                            <span class="content" ng-if="!!question.accepted_answer_id">Yes</span>
-                            <span class="content" ng-if="!question.accepted_answer_id">No</span>
-                        </div>
-                        <div class="grid-col grid-col-quarter">
-                            <span class="heading">Total Answers</span>
-                        </div>
-                        <div class="grid-col grid-col-quarter">
-                            <span class=>{{question.answer_count}}</span>
+                        <div class="grid-col grid-col-full">
+                            <span class="heading tag-heading">Tags</span>
+                            <span class="tag" ng-repeat="tag in question.tags">
+                                {{tag}}
+                            </span>
                         </div>
                     </div>
                     <div class="grid-row">
@@ -37,11 +30,18 @@
                         </div>
                     </div>
                     <div class="grid-row">
-                        <div class="grid-full">
-                            <span class="heading tag-heading">Tags</span>
-                            <span class="tag" ng-repeat="tag in question.tags">
-                                {{tag}}
-                            </span>
+                        <div class="grid-col grid-col-quarter">
+                            <span class="heading">Answer Accepted</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class="content" ng-if="!!question.accepted_answer_id">Yes</span>
+                            <span class="content" ng-if="!question.accepted_answer_id">No</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class="heading">Total Answers</span>
+                        </div>
+                        <div class="grid-col grid-col-quarter">
+                            <span class=>{{question.answer_count}}</span>
                         </div>
                     </div>
                 </div>
@@ -63,6 +63,9 @@
                             <span>{{answers[question.question_id].down_vote_count}} votes</span>
                         </div>
                     </div>
+                </div>
+                <div ng-if="!question.accepted_answer_id" class="score-wrapper">
+                    <span class="no-score">No accepted answer...</span>
                 </div>
 
             </div>

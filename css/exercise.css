@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', 'sans-serif';
-    color: #000000;
+    color: #333333;
     background-color: #1F1F1F;
 }
 
@@ -164,12 +164,13 @@ span.tag-heading {
 }
 span.tag {
     display: inline-block;
-    background-color: #93BFE6;
+    background-color: #BEE0FF;
     padding: 3px;
     margin-right: 5px;
     border: 1px solid #0C7BDE;
     font-size: 10px;
     border-radius: 2px;
+    color: #000000;
 }
 
 /*div.loading {*/
@@ -185,6 +186,9 @@ div.loading:before {
 div.score-wrapper {
     text-align: center;
 }
+div.score-wrapper .no-score {
+    color: #B3B3B3;
+}
 div.score-overview {
     display: inline-block;
     border: 2px solid #0C7BDE;
@@ -194,6 +198,7 @@ div.score-overview {
     text-align: center;
     font-size: 16px;
     padding: 10px;
+    margin-top: 10px;
 }
 
 div.score-overview .score {
@@ -203,6 +208,8 @@ div.score-overview .score {
 div.score-overview .score-value {
     font-size: 40px;
 }
+
+
 div.votes {
 
 }
@@ -219,6 +226,7 @@ div.down-vote:before {
 div.down-vote {
     color: #808080;
 }
+
 
 
 .infinite-scroll-wrapper {
