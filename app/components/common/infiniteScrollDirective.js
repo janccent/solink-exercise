@@ -33,16 +33,11 @@ define([
 
                     function scrollHandler() {
                         var handlerLoadMore = function() {
-                            //console.log('scrolling......');
-
-                            //console.log($window.innerHeight);
-                            //console.log(angular.element(document.documentElement.clientHeight));
-
                             var rect = element[0].getBoundingClientRect();
 
                             // Only concerned with vertical scrolling
                             if ( rect.bottom - offset <= ($window.innerHeight || angular.element(document.documentElement.clientHeight)) ) {
-                                console.log('Fire Event');
+                                //console.log('Fire Event');
                                 scope.$emit('eventLoadMore');
                             }
                         };

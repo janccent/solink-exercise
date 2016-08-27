@@ -25,14 +25,11 @@ define([
             }
 
             function addQuestions() {
-                console.log('CURRENT PAGE=' + currentPage);
-                console.log('quota' + $scope.quotaRemaining);
-                // TODO: quota
                 if ( $scope.quotaRemaining === undefined || $scope.quotaRemaining > 0 ) {
                     QuestionsApiService.getQuestions(currentPage).then(
                         function (response) {
-                            console.log('GET QUESTIONS');
-                            console.log(response);
+                            //console.log('GET QUESTIONS');
+                            //console.log(response);
                             $scope.quotaRemaining = response.data.quota_remaining;
 
                             var questions = response.data.items;
@@ -56,15 +53,12 @@ define([
             $scope.questions = [];
 
             $scope.$on('eventLoadMore', function (event, data) {
-                console.log('get next batch');
                 currentPage++;
                 if ($scope.$$phase || $rootScope.$$phase) {
                     addQuestions();
                 } else {
                     $scope.$apply(addQuestions());
                 }
-                //addQuestions();
-                //$scope.$apply();
             });
 
             addQuestions();
@@ -73,24 +67,17 @@ define([
 
             $scope.hasDetails = function(acceptedAnswerId) {
                 return $scope.answers.hasOwnProperty(acceptedAnswerId);
-                //return $scope.answers.hasOwnProperty(questionId) && $scope.answers[questionId].score > 0;
-                //return $scope.answers.hasOwnProperty(questionId) && (
-                //        $scope.answers[questionId].score > 0 ||
-                //        $scope.answers[questionId].up_vote_count > 0 ||
-                //        $scope.answers[questionId].down_vote_count > 0
-                //    );
             };
 
             $scope.getDetail = function(acceptedAnswerId) {
-                console.log('get detail');
-                console.log('quota' + $scope.quotaRemaining);
-                if ( acceptedAnswerId != null && $scope.quotaRemaining > 0 && (! $scope.answers.hasOwnProperty(acceptedAnswerId) || $scope.answers[acceptedAnswerId] == null) ) {
-                    console.log('no answer so');
-                    console.log("answer ID" + acceptedAnswerId);
+                if ( acceptedAnswerId != null &&
+                    $scope.quotaRemaining > 0 &&
+                    (! $scope.answers.hasOwnProperty(acceptedAnswerId) || $scope.answers[acceptedAnswerId] == null)
+                ) {
                     QuestionsApiService.getAnswer(acceptedAnswerId).then(
                         function(response) {
-                            console.log('GET ANSWER');
-                            console.log(response);
+                            //console.log('GET ANSWER');
+                            //console.log(response);
                             $scope.quotaRemaining = response.data.quota_remaining;
 
                             $scope.answers[acceptedAnswerId] = response.data.items[0];
